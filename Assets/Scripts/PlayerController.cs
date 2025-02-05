@@ -23,24 +23,34 @@ public class PlayerController : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
-    void SetCountText(){
-        countText.text = "Count: " + count.ToString();
-        if (count >= 13){
-            winTextObject.SetActive (true);
-        }
-    }
+    
     private void FixedUpdate(){
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
         
     }
-     void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("PickUp")) {
             other.gameObject.SetActive(false);
             count++;
             SetCountText();
         }
-        
+    }
+    void SetCountText()
+    {
+        countText.text = "Count: " + count.ToString();
+        if (count >= 13)
+        {
+            winTextObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+        }
+    }
+    private void OnCollisionEnter(Collision collision){
+        if (collision.gameObject.CompareTag("Enemy")){
+            Destroy(gameObject);
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+        }
     }
 
 }
