@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: dba3ab6625a50fc4a98303676a52f7bb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Qwitcher Grypen
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9389fef47c078284699f3aa9eb729120, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
