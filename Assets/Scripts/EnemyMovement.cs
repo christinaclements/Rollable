@@ -3,11 +3,13 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public AudioSource gameEnd;
     public Transform player;
     private NavMeshAgent navMeshAgent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         navMeshAgent = GetComponent<NavMeshAgent>();
+        gameEnd = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -15,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
         //Debug.Log(player.position);
         if (player != null){
             navMeshAgent.SetDestination(player.position);
-        }
+        } 
     }
 
 }
