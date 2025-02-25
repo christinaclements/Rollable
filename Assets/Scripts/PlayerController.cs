@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     public AudioSource collect;
     public AudioSource win;
+    public GameObject explosionFX;
+    public GameObject pickupFX;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -36,7 +38,9 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("PickUp")) {
+            var currentPickupFX = Instantiate(pickupFX, other.transform.position, Quaternion.identity);
             other.gameObject.SetActive(false);
+            Destroy(currentPickupFX, 3);
             count++;
             SetCountText();
             collect.Play();
@@ -55,6 +59,7 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.GetComponent<AudioSource>().Play();
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            Instantiate(explosionFX, transform.position, Quaternion.identity);
             Destroy(gameObject, .05f);
         }
     }
