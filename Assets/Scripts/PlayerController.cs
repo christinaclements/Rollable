@@ -57,7 +57,8 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Enemy")){
             Instantiate(explosionFX, transform.position, Quaternion.identity);
-            Destroy(gameObject, .05f);
+            gameObject.SetActive(false);
+            //Destroy(gameObject, .05f);
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             collision.gameObject.GetComponent<AudioSource>().Play();
